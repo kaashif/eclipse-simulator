@@ -8,7 +8,32 @@
 <p>Here are the results:</p>
 
 <div class="results">
-  {{ results }}
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Attacker win probability: {{ results["attacker_win_prob"] }}%
+    </div>
+    <div class="panel-body">
+      Attackers:
+      <ul>
+        {% for ship in results["attackers"] %}
+        <li>{{ ship }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Defender win probability: {{ results["defender_win_prob"] }}%
+    </div>
+    <div class="panel-body">
+      Defenders:
+      <ul>
+        {% for ship in results["defenders"] %}
+        <li>{{ ship }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
 </div>
 
 <p>You can copy the URL to this page to share your results with your friends.</p>

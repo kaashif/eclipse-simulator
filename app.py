@@ -14,15 +14,16 @@ def index():
 def about():
     return render_template("about.html")
 
-def dump(obj):
-    res = "{"
-    for attr in dir(obj):
-        res += " obj.%s = %r " % (attr, getattr(obj, attr))
-    res += "}"
-    return res
+def to_string(ship):
+    return f"Ship has size {ship.size}, hull {ship.hull}"
 
 def simulate(attackers, defenders):
-    return "attackers: \n" + "\n".join([dump(ship) for ship in attackers]) + "\ndefenders: \n" + "\n".join([dump(ship) for ship in defenders])
+    return {
+        "attackers": [to_string(s) for s in attackers],
+        "defenders": [to_string(s) for s in defenders],
+        "attacker_win_prob": 20,
+        "defender_win_prob": 80
+    }
 
 def to_ships(raw_ships):
     return [
@@ -49,8 +50,7 @@ def results(input):
     raw_ships = json.loads(json_text)
     sim_result = simulate(to_ships(raw_ships["attackers"]),
                           to_ships(raw_ships["defenders"]))
-    result_text = f"idk but here's the input: {sim_result}"
-    return render_template("results.html", results=result_text)
+    return render_template("results.html", results=sim_result)
 
 if __name__ == "__main__":
     app.run(port=8000, host="0.0.0.0")
