@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block buttons %}
+<li role="presentation" class="active"><a href="/">Simulator</a></li>
+<li role="presentation"><a href="/about">About</a></li>
+<li role="presentation"><a href="https://github.com/kaashif/eclipse-simulator">Source</a></li>
+{% endblock %}
+{% block content %}
+<div class="alert alert-info">
+  This simulator doesn't work at all.
+</div>
+
+<div class="panel">
+  <h1>Attackers</h1>
+  <button id="attacker-add-ship" type="button" class="btn btn-success">Add ship</button>
+</div>
+
+<div id="attackers">
+</div>
+
+<hr/>
+
+<div class="panel">
+  <h1>Defenders</h1>
+  <button id="defender-add-ship" type="button" class="btn btn-success">Add ship</button>
+</div>
+
+<div id="defenders">
+</div>
+
+<script type="text/javascript" src="/static/form.js"></script>
+{% endblock %}

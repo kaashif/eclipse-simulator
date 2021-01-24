@@ -1,3 +1,14 @@
+{% extends "layout.html" %}
+{% block buttons %}
+<li role="presentation"><a href="/">Simulator</a></li>
+<li role="presentation" class="active"><a href="/about">About</a></li>
+<li role="presentation"><a href="https://github.com/kaashif/eclipse-simulator">Source</a></li>
+{% endblock %}
+{% block content %}
+<h2>License</h2>
+<pre>
+Copyright (c) 2021 Kaashif Hymabaccus
+
                     GNU AFFERO GENERAL PUBLIC LICENSE
                        Version 3, 19 November 2007
 
@@ -659,3 +670,7 @@ specific requirements.
 if any, to sign a "copyright disclaimer" for the program, if necessary.
 For more information on this, and how to apply and follow the GNU AGPL, see
 <https://www.gnu.org/licenses/>.
+
+
+</pre>
+{% endblock %}
