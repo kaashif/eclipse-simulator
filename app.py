@@ -1,8 +1,9 @@
 from flask import Flask, render_template
-from eclipse_simulator.simulator import Ship
+from eclipse_simulator.simulator import Ship, run_simulations
 import urllib.parse
 import base64
 import json
+from math import floor
 
 app = Flask(__name__)
 
@@ -15,7 +16,7 @@ def about():
     return render_template("about.html")
 
 def to_string(ship):
-    return f"""Ship has size {ship.size}, \
+    return f"""{ship.number} {ship.size}(s) with: \
 {ship.yellow} yellow di(c)e, \
 {ship.orange} orange di(c)e, \
 {ship.blue} blue di(c)e, \
@@ -29,11 +30,13 @@ gives enemies -{ship.shield} from shields, \
 {ship.initiative} initiative."""
 
 def simulate(attackers, defenders):
+    num_runs = 10
+    attacker_prob, defender_prob = run_simulations(attackers, defenders, num_runs)
     return {
         "attackers": [to_string(s) for s in attackers],
         "defenders": [to_string(s) for s in defenders],
-        "attacker_win_prob": 20,
-        "defender_win_prob": 80
+        "attacker_win_prob": floor(attacker_prob*100),
+        "defender_win_prob": floor(defender_prob*100)
     }
 
 def to_ships(raw_ships):
@@ -50,7 +53,8 @@ def to_ships(raw_ships):
             computer = ship["computer"],
             shield = ship["shield"],
             hull = ship["hull"],
-            initiative = ship["initiative"]
+            initiative = ship["initiative"],
+            number = ship["number"]
         )
         for ship in raw_ships
     ]
