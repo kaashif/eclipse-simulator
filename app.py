@@ -15,7 +15,18 @@ def about():
     return render_template("about.html")
 
 def to_string(ship):
-    return f"Ship has size {ship.size}, hull {ship.hull}"
+    return f"""Ship has size {ship.size}, \
+{ship.yellow} yellow di(c)e, \
+{ship.orange} orange di(c)e, \
+{ship.blue} blue di(c)e, \
+{ship.red} red di(c)e, \
+{ship.purple} purple di(c)e, \
+{ship.yellow_missile} yellow missile di(c)e, \
+{ship.orange_missile} orange missile di(c)e, \
++{ship.computer} from computers, \
+gives enemies -{ship.shield} from shields, \
+{ship.hull} extra hull (can take {int(ship.hull) + 1} hit(s)), \
+{ship.initiative} initiative."""
 
 def simulate(attackers, defenders):
     return {
