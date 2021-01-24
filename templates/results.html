@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block buttons %}
+<li role="presentation" class="active"><a href="/">Simulator</a></li>
+<li role="presentation"><a href="/about">About</a></li>
+<li role="presentation"><a href="https://github.com/kaashif/eclipse-simulator">Source</a></li>
+{% endblock %}
+{% block content %}
+<p>Here are the results:</p>
+
+<div class="results">
+  {{ results }}
+</div>
+
+<p>You can copy the URL to this page to share your results with your friends.</p>
+{% endblock %}
