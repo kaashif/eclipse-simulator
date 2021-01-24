@@ -83,8 +83,8 @@ function addShip(party) {
                          "purple",
                          "yellow_missile",
                          "orange_missile",
-                         "computers",
-                         "shields",
+                         "computer",
+                         "shield",
                          "hull",
                          "initiative",
                          "number"];
@@ -186,5 +186,5 @@ document.getElementById("submit").onclick = function() {
         attackers: extractShips("attackers"),
         defenders: extractShips("defenders")
     }));
-    //window.location = "/results/" + encodeURIComponent(json);
+    window.location = "/results/" + encodeURIComponent(json);
 };
