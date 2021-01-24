@@ -41,7 +41,7 @@ def to_ships(raw_ships):
             hull = ship["hull"],
             initiative = ship["initiative"]
         )
-        for ship in raw_ships.values()
+        for ship in raw_ships
     ]
 
 @app.route("/results/<input>")
